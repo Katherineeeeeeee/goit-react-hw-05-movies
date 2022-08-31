@@ -1,7 +1,12 @@
-// import React from 'react';
+import List from '../modules/List/List';
 
-const Home = () => {
-  return <h1>Home </h1>;
-};
-
-export default Home;
+export default function Home() {
+  return (
+    <main>
+      <div>
+        <h2>Trend week</h2>
+        <List />
+      </div>
+    </main>
+  );
+}

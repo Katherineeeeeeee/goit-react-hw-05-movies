@@ -15,9 +15,6 @@ export default function Navigation() {
         <NavLink to="/movies" className={isActive}>
           Movies
         </NavLink>
-        <NavLink to="/movies/:movieId" className={isActive}>
-          Movie Details
-        </NavLink>
       </nav>
     </>
   );
