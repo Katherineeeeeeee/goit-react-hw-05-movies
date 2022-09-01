@@ -1,15 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
-import { getMovieDetailes } from '../../Api/api';
-import s from './MovieDetails.module.css';
+import { Link, Outlet, useParams } from 'react-router-dom';
+import { getMovieDetailes } from '../Api/api';
+// import s from '../components/MovieDetails/MovieDetails.module.css';
 
-import MoviesDetailsItem from './MoviesDetailsItem';
+import MoviesDetailsItem from '../components/MovieDetails/MoviesDetailsItem';
+import Btn from 'components/Btn/Btn';
 
 export default function MoviesDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     getMovieDetailes(movieId)
@@ -17,15 +17,11 @@ export default function MoviesDetails() {
       .catch(error => console.log(error));
   }, [movieId]);
 
-  const goBack = () => navigate(-1);
-
   return (
     <main>
       <h1>Movie details</h1>
       <MoviesDetailsItem movie={movie} />
-      <button className={s.btn} onClick={goBack}>
-        Go back
-      </button>
+      <Btn text="Go back" />
 
       <h2>Additional information</h2>
       <ul>

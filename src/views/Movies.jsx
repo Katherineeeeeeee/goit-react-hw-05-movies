@@ -1,8 +1,9 @@
-// import React from 'react';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getSearch } from '../../Api/api';
-import ListItem from '../../modules/List/ListItem';
+import { getSearch } from '../Api/api';
+
+import Searchbar from 'components/Searchbar/Searchbar';
+import ListItem from '../components/List/ListItem';
 
 export default function Movies() {
   const [movies, setMovies] = useState(null);
@@ -15,7 +16,6 @@ export default function Movies() {
       return alert('Try again');
     }
     const form = e.currentTarget;
-    // console.log(form.element.search.value);
     setSearchParams({ search: form.elements.search.value });
     form.reset();
   };
@@ -30,19 +30,7 @@ export default function Movies() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <button type="submit">🔍</button>
-
-          <input
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search movie"
-            name="search"
-          />
-        </label>
-      </form>
+      <Searchbar handleSubmit={handleSubmit} />
       {movies && <ListItem movies={movies} />}
     </>
   );

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieCredits } from '../../Api/api';
+import { getMovieCredits } from '../Api/api';
 
-import CastItem from './CastItem';
+import CastItem from '../components/Cast/CastItem';
 
 export default function Cast() {
   const { movieId } = useParams();

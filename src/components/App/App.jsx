@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from 'modules/Navigation/Navigation';
+import Navigation from 'components/Navigation/Navigation';
 import UserRoutes from '../../UserRoutes';
 
 import s from './App.module.css';

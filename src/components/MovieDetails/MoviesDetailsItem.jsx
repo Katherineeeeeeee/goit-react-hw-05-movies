@@ -6,7 +6,7 @@ export default function MoviesDetailsItem({ movie }) {
         <img
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
           alt={movie.original_title}
-          width={'200px'}
+          width={'400px'}
         />
         <p>Users Scores: {movie.popularity}%</p>
         <h3>Overview</h3>

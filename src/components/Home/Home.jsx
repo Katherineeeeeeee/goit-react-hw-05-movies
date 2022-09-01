@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { getPopularMovies } from '../../Api/api';
 
-import ListItem from './ListItem';
+import ListItem from '../List/ListItem';
 
 export default function List() {
   const [movies, setMovies] = useState([]);
