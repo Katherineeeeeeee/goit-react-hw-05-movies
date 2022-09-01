@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
+
 import { getPopularMovies } from '../../Api/api';
+
+import ListItem from './ListItem';
 
 export default function List() {
   const [movies, setMovies] = useState([]);
@@ -10,17 +13,5 @@ export default function List() {
       .catch(error => console.log(error));
   }, []);
 
-  return (
-    <>
-      <div>
-        {movies && (
-          <ul>
-            {movies.map(movie => (
-              <li key={movie.id}>{movie.title}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </>
-  );
+  return <ListItem movies={movies} />;
 }
