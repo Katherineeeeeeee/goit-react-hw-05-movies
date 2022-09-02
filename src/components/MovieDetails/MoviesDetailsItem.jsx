@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './MovieDetails.module.css';
 import Btn from 'components/Btn/Btn';
 
@@ -28,3 +29,17 @@ export default function MoviesDetailsItem({ movie }) {
     )
   );
 }
+
+MoviesDetailsItem.propTypes = {
+  movie: PropTypes.object,
+  poster_path: PropTypes.string,
+  original_title: PropTypes.string,
+  popularity: PropTypes.number,
+  overview: PropTypes.string,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    })
+  ),
+};

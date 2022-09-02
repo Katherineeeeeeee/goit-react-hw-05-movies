@@ -30,7 +30,6 @@ img {
 
 li {
   font-size: 20px;
-  /* list-style-type: none; */
 }
 p {
   font-size: 20px;
@@ -54,5 +53,6 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  color: #f2317f;
 }

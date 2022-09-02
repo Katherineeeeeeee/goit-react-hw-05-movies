@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearch } from '../Api/api';
@@ -35,3 +37,14 @@ export default function Movies() {
     </>
   );
 }
+
+Movies.propTypes = {
+  search: PropTypes.string,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string,
+    })
+  ),
+};

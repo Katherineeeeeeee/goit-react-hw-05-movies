@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import s from './Searchbar.module.css';
+
 export default function Searchbar({ handleSubmit }) {
   return (
     <div className={s.wrap}>
@@ -21,3 +23,7 @@ export default function Searchbar({ handleSubmit }) {
     </div>
   );
 }
+
+Searchbar.propTypes = {
+  search: PropTypes.string,
+};

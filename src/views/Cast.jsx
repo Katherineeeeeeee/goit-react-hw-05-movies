@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from '../Api/api';
@@ -17,8 +18,18 @@ export default function Cast() {
   }, [movieId]);
   return (
     <>
-      <h2>Cast</h2>
       <CastItem cast={cast} />
     </>
   );
 }
+
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      profile_path: PropTypes.string,
+      character: PropTypes.string,
+    })
+  ),
+};

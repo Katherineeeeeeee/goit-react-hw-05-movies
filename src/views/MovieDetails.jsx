@@ -1,9 +1,10 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { getMovieDetailes } from '../Api/api';
 
 import MoviesDetailsItem from '../components/MovieDetails/MoviesDetailsItem';
+import s from '../components/MovieDetails/MovieDetails.module.css';
 
 export default function MoviesDetails() {
   const { movieId } = useParams();
@@ -19,8 +20,8 @@ export default function MoviesDetails() {
     <main>
       <MoviesDetailsItem movie={movie} />
 
-      <h2>Additional information</h2>
-      <ul>
+      <h2 className={s.additionalTitle}>Additional information</h2>
+      <ul className={s.list}>
         <li>
           <Link to="cast">Cast</Link>
         </li>
@@ -32,3 +33,20 @@ export default function MoviesDetails() {
     </main>
   );
 }
+
+MoviesDetails.propTypes = {
+  movie: PropTypes.arrayOf(
+    PropTypes.shape({
+      poster_path: PropTypes.string,
+      original_title: PropTypes.string,
+      popularity: PropTypes.number,
+      overview: PropTypes.string,
+      genres: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string,
+        })
+      ),
+    })
+  ),
+};

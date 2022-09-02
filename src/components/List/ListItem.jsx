@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import s from './List.module.css';
 
@@ -11,7 +13,6 @@ export default function ListItem({ movies }) {
               className={s.img}
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={movie.original_title}
-              // width={'500px'}
             />
             <Link to={`/movies/${movie.id}`}>
               <span className={s.title}>{movie.title}</span>
@@ -21,3 +22,10 @@ export default function ListItem({ movies }) {
     </ul>
   );
 }
+
+ListItem.propTypes = {
+  movies: PropTypes.array,
+  id: PropTypes.number,
+  poster_path: PropTypes.string,
+  title: PropTypes.string,
+};
