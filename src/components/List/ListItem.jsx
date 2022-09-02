@@ -11,9 +11,11 @@ export default function ListItem({ movies }) {
               className={s.img}
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={movie.original_title}
-              width={'500px'}
+              // width={'500px'}
             />
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            <Link to={`/movies/${movie.id}`}>
+              <span className={s.title}>{movie.title}</span>
+            </Link>
           </li>
         ))}
     </ul>

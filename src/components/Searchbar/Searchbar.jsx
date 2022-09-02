@@ -1,17 +1,23 @@
+import s from './Searchbar.module.css';
 export default function Searchbar({ handleSubmit }) {
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <button type="submit">🔍</button>
+    <div className={s.wrap}>
+      <form className={s.searchForm} onSubmit={handleSubmit}>
+        <label className={s.wrap}>
+          <button className={s.btn} type="submit">
+            <span className={s.icon}> 🔍</span>
+          </button>
 
-        <input
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search movie"
-          name="search"
-        />
-      </label>
-    </form>
+          <input
+            className={s.input}
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search movie"
+            name="search"
+          />
+        </label>
+      </form>
+    </div>
   );
 }

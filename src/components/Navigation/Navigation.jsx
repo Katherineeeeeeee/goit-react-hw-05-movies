@@ -10,10 +10,10 @@ export default function Navigation() {
     <>
       <nav>
         <NavLink to="/" className={isActive}>
-          Home
+          <span className={s.nav}>Home</span>
         </NavLink>
         <NavLink to="/movies" className={isActive}>
-          Movies
+          <span className={s.nav}>Movies</span>
         </NavLink>
       </nav>
     </>

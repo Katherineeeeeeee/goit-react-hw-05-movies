@@ -1,0 +1,8 @@
+.item {
+  margin: 10px;
+  list-style-type: none;
+}
+.author {
+  margin-bottom: 10px;
+  color: #f2317f;
+}

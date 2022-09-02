@@ -13,11 +13,11 @@ export default function Reviews() {
         setReviews(result.results);
       })
       .catch(error => console.log(error));
-  }, [movieId]);
+  }, [movieId, reviews]);
   return (
     <>
       <h2>Reviews</h2>
-      <ReviewsItem reviews={reviews} />
+      {reviews && <ReviewsItem reviews={reviews} />}
     </>
   );
 }
