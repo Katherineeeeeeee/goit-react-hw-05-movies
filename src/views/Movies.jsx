@@ -6,10 +6,12 @@ import { getSearch } from '../Api/api';
 
 import Searchbar from 'components/Searchbar/Searchbar';
 import ListItem from '../components/List/ListItem';
+import Loader from 'components/Loader/Loader';
 
 export default function Movies() {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [loading, setLoading] = useState(false);
   const search = searchParams.get('search');
 
   const handleSubmit = e => {
@@ -24,15 +26,18 @@ export default function Movies() {
 
   useEffect(() => {
     if (search) {
+      setLoading(true);
       getSearch(search)
         .then(data => setMovies(data.results))
-        .catch(error => console.log(error));
+        .catch(error => console.log(error))
+        .finally(setLoading(false));
     }
   }, [search]);
 
   return (
     <>
       <Searchbar handleSubmit={handleSubmit} />
+      {loading && <Loader />}
       {movies && <ListItem movies={movies} />}
     </>
   );

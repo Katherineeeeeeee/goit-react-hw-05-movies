@@ -25,5 +25,5 @@ export default function Searchbar({ handleSubmit }) {
 }
 
 Searchbar.propTypes = {
-  search: PropTypes.string,
+  handleSubmit: PropTypes.func,
 };

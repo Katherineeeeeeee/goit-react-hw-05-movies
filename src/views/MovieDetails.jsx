@@ -4,16 +4,20 @@ import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { getMovieDetailes } from '../Api/api';
 
 import MoviesDetailsItem from '../components/MovieDetails/MoviesDetailsItem';
+import Loader from 'components/Loader/Loader';
 import s from '../components/MovieDetails/MovieDetails.module.css';
 
 export default function MoviesDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getMovieDetailes(movieId)
       .then(setMovie)
-      .catch(error => console.log(error));
+      .catch(error => console.log(error))
+      .finally(setLoading(false));
   }, [movieId]);
 
   const location = useLocation();
@@ -21,6 +25,7 @@ export default function MoviesDetails() {
 
   return (
     <main>
+      {loading && <Loader />}
       <MoviesDetailsItem movie={movie} />
 
       <h2 className={s.additionalTitle}>Additional information</h2>
@@ -57,3 +62,12 @@ MoviesDetails.propTypes = {
     })
   ),
 };
+
+// why don't work???????
+
+// const singlePageRegexp = /^\/movies\/\d$/;
+// const isSingelPage = singlePageRegexp.test(location.pathname);
+
+// const castLink = isSingelPage
+//   ? `/movies/${movieId}/cast`
+//   : `/movies/${movieId}/}`;

@@ -4,8 +4,7 @@ import s from './Btn.module.css';
 export default function Btn({ text }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state.from;
-  // const prevPage = location.state?.from ?? '/';
+  const from = location.state?.from || '/';
 
   const goBack = () => navigate(from);
   return (
