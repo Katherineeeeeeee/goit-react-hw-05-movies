@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import s from './List.module.css';
 
 export default function ListItem({ movies }) {
+  const location = useLocation();
+
   return (
     <ul className={s.list}>
       {movies &&
@@ -14,7 +16,7 @@ export default function ListItem({ movies }) {
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               alt={movie.original_title}
             />
-            <Link to={`/movies/${movie.id}`}>
+            <Link state={{ from: location }} to={`/movies/${movie.id}`}>
               <span className={s.title}>{movie.title}</span>
             </Link>
           </li>

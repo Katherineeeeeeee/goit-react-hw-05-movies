@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { getMovieDetailes } from '../Api/api';
 
 import MoviesDetailsItem from '../components/MovieDetails/MoviesDetailsItem';
@@ -16,6 +16,9 @@ export default function MoviesDetails() {
       .catch(error => console.log(error));
   }, [movieId]);
 
+  const location = useLocation();
+  const from = location.state.from;
+
   return (
     <main>
       <MoviesDetailsItem movie={movie} />
@@ -23,10 +26,14 @@ export default function MoviesDetails() {
       <h2 className={s.additionalTitle}>Additional information</h2>
       <ul className={s.list}>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link state={{ from }} to="cast">
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link state={{ from }} to="reviews">
+            Reviews
+          </Link>
         </li>
       </ul>
       <Outlet />
