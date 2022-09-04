@@ -13,7 +13,7 @@ export default function CastItem({ cast }) {
               src={
                 profile_path
                   ? `https://image.tmdb.org/t/p/original${profile_path}`
-                  : ``
+                  : `https://www.peakpx.com/en/hd-wallpaper-desktop-arzfv`
               }
               alt={name}
               width={'400px'}
